@@ -1,9 +1,38 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">App Component</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <h1>
-      Welcome {{title}}!
-    </h1>
-    <p>This is the main component</p>
-    <router-outlet></router-outlet>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/abc" routerLinkActive="active">ABC</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/xyz" routerLinkActive="active">XYZ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/brandnew" routerLinkActive="active">Brand New</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </nav>
+  <br>
+  <br>
+  <h1>
+    Welcome {{title}}!
+  </h1>
+  <br>
+  <h2>This is the main holding component</h2>
+  <br>
+  <br>
+  <br>
+  <br>
+  <router-outlet></router-outlet>

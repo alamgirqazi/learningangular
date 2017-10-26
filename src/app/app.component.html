@@ -1,7 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">App Component</a>
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="/">App Component</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -22,17 +22,90 @@
 
       </ul>
 
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <button type="button" class="btn btn-primary">
+            <span class="glyphicon glyphicon-user"></span> Sign Up</button>
+        </li>
+        <li></li>
+        <li>
+          <button type="button" class="btn btn-secondary">
+            <span class="glyphicon glyphicon-user"></span> Login</button>
+        </li>
+
+      </ul>
     </div>
-  </nav>
+  </nav> -->
+  <!-- 
   <br>
-  <br>
-  <h1>
-    Welcome {{title}}!
-  </h1>
-  <br>
-  <h2>This is the main holding component</h2>
-  <br>
-  <br>
-  <br>
-  <br>
-  <router-outlet></router-outlet>
+  <br> -->
+  <div class="row">
+    <div class="col-md-2">
+      <!-- <div class="list-group">
+        <a routerLink="/" routerLinkActive="active" class="list-group-item list-group-item-action">
+          Home </a>
+        <a routerLinkActive="active" routerLink="/child/a" class="list-group-item list-group-item-action">Child A</a>
+        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+        <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+      </div> -->
+
+      <!-- menu -->
+      <div id="MainMenu">
+        <div class="list-group panel">
+          <a routerLink="/" class="list-group-item list-group-item-success" data-parent="#MainMenu">Home</a>
+          <a routerLinkActive="active" routerLink="/abc" class="list-group-item list-group-item-success" data-parent="#MainMenu">ABC</a>
+          <a routerLinkActive="active" routerLink="/xyz" class="list-group-item list-group-item-success" data-parent="#MainMenu">XYZ</a>
+          <a routerLinkActive="active" routerLink="/brandnew" class="list-group-item list-group-item-success" data-parent="#MainMenu">BrandNew</a>
+          <a href="#demo3" (click)="changeUrl()" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Child
+            <i class="fa fa-caret-down"></i>
+          </a>
+          <div class="collapse" id="demo3">
+            <!-- <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">Subitem 1
+              <i class="fa fa-caret-down"></i>
+            </a> -->
+            <!-- <div class="collapse list-group-submenu" id="SubMenu1">
+              <!<a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 1 a</a>
+              <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 2 b</a> -->
+            <!-- <a href="#SubSubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubSubMenu1">Subitem 3 c
+                <i class="fa fa-caret-down"></i>
+              </a> -->
+            <!-- <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu1"> -->
+            <!-- <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 1</a> -->
+            <!-- <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 2</a> -->
+            <!-- </div> -->
+            <!-- <a routerLinkActive="active" routerLink="/child/a" class="list-group-item" data-parent="#SubMenu1">Child A</a>
+          </div> -->
+            <!-- <a routerLinkActive="active" routerLink="/child/a" class="list-group-item">Child A</a> -->
+            <a routerLinkActive="active" routerLink="/child/a/b" class="list-group-item">Child AB</a>
+            <a routerLinkActive="active" routerLink="/child/a/123" class="list-group-item">Child ID</a>
+
+            <!-- <a href="javascript:;" class="list-group-item">Subitem 2</a>
+            <a href="javascript:;" class="list-group-item">Subitem 3</a> -->
+          </div>
+          <!-- <a routerLinkActive="active" routerLink="/child" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Child
+            <i class="fa fa-caret-down"></i>
+          </a> -->
+          <div class="collapse" id="demo4">
+            <a routerLinkActive="active" routerLink="/child/a" class="list-group-item">Child A</a>
+            <a routerLinkActive="active" routerLink="/child/a/b" class="list-group-item">Child AB</a>
+            <a routerLinkActive="active" routerLink="/child/a/123" class="list-group-item">Child ID</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-10">
+      <h1>
+        Welcome {{title}}!
+      </h1>
+      <br>
+      <h2>This is the main holding component</h2>
+      <br>
+      <br>
+      <br>
+      <br>
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>

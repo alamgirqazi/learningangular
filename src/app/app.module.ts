@@ -4,6 +4,8 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { OtherComponent } from "./other/other.component";
+import { ProjectsComponent } from "./projectscomponent/projects.component";
+import { ProjectDetailsComponent } from "./projectscomponent/details.component";
 import { AnotherComponent } from "./another/another.component";
 import { BrandNewComponent } from "./brandnewcomp/brandnew.component";
 import { BrandNewMoreComp } from "./brandnewmorecomp/brandnewmorecomp.component";
@@ -19,44 +21,60 @@ import { MatButtonModule, MatCheckboxModule } from "@angular/material";
 
 const appRoutes: Routes = [
   { path: "abc", component: OtherComponent },
-  { path: "brandnew", component: BrandNewComponent },
-  { path: "brandnew/more", component: BrandNewMoreComp },
-  { path: "xyz", component: AnotherComponent },
-
+  { path: "", component: OtherComponent },
   {
-    path: "child",
-    component: ChildComponent,
+    path: "projects",
+    component: ProjectsComponent,
+
     children: [
       {
-        path: "a",
-        component: ChildAComponent,
-        children: [
-          {
-            path: "b",
-            component: ChildBComponent
-          },
-          {
-            path: ":id",
-            component: ChildIdComponent
-          }
-        ]
+        path: "",
+        component: ErrorPage
       },
       {
-        path: "b",
-        component: ChildAComponent,
-        children: [
-          {
-            path: "b",
-            component: ChildBBComponent
-          },
-          {
-            path: ":id",
-            component: ChildIdBComponent
-          }
-        ]
+        path: ":id",
+        component: ProjectDetailsComponent
       }
     ]
   }
+  // { path: "brandnew", component: BrandNewComponent },
+  // { path: "brandnew/more", component: BrandNewMoreComp },
+  // { path: "xyz", component: AnotherComponent },
+
+  // {
+  //   path: "child",
+  //   component: ChildComponent,
+  //   children: [
+  //     {
+  //       path: "a",
+  //       component: ChildAComponent,
+  //       children: [
+  //         {
+  //           path:  "",
+  //           component: ErrorPage
+  //         },
+  //         {
+  //           path: ":id",
+  //           component: ChildIdComponent
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       path: "b",
+  //       component: ChildBComponent,
+  //       children: [
+  //         {
+  //           path: "b",
+  //           component: ChildBBComponent
+  //         },
+  //         {
+  //           path: ":id",
+  //           component: ChildIdBComponent
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // }
   // { path: "**", component: ErrorPage }
 ];
 
@@ -73,7 +91,9 @@ const appRoutes: Routes = [
     ErrorPage,
     ChildIdBComponent,
     ChildBBComponent,
-    ChildIdComponent
+    ChildIdComponent,
+    ProjectsComponent,
+    ProjectDetailsComponent
   ],
   imports: [
     BrowserModule,

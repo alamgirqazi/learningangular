@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 @Component({
   selector: "app-childIdB",
   template: `
-    <h3>Child Id B Component</h3>
+    <h3>Child B > ID Component</h3>
   
     `
 })

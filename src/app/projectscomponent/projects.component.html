@@ -1,0 +1,22 @@
+<h2> Projects Component</h2>
+
+<div class="row">
+
+    <div class="col-md-3">
+
+
+        <div class="list-group">
+
+            <a *ngFor="let proj of projectsData" [routerLink]="proj.id" routerLinkActive="active" class="list-group-item ">
+                {{proj.name}}</a>
+        </div>
+    </div>
+
+    <div class="col-md-9 ">
+
+        <router-outlet></router-outlet>
+    </div>
+
+
+
+</div>

@@ -1,0 +1,17 @@
+<br>
+<br>
+<h4>details component</h4>
+<div class="container">
+    <!--  -->
+    <ng-container *ngFor="let proj of projectsData">
+        <div *ngIf=" proj.id==routeId " class="card " style=" ">
+            <div class="card-body ">
+                <h4 class="card-title ">Id: {{proj.id}}</h4>
+                <h4 class="card-title ">and Project Name: {{proj.name}}</h4>
+                <p class="card-text ">{{proj.pending}}</p>
+            </div>
+            <br>
+        </div>
+    </ng-container>
+
+</div>

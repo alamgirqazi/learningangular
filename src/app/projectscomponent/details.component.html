@@ -2,17 +2,18 @@
 <br>
 <h4>details component</h4>
 <div class="container">
-    <ng-container *ngFor="let proj of projectsData">
-        <div *ngIf=" proj.id==routeId " class="card " style="">
-            <div class="card-body ">
-                <h4 class="card-title ">Id: {{proj.id}}</h4>
-                <h4 class="card-title ">Project Name: {{proj.name}}</h4>
-                <p class="card-text ">Project status: {{proj.status}}</p>
-
-            </div>
-            <br>
+    <!-- <ng-container *ngFor="let proj of projectsData"> -->
+    <div class="card " style="">
+        <!-- <div *ngIf=" proj.id==routeId " class="card " style=""> -->
+        <div class="card-body ">
+            <h4 class="card-title ">Id: {{projectsData.id}}</h4>
+            <h4 class="card-title ">Project Name: {{projectsData.name}}</h4>
+            <p class="card-text ">Project status: {{projectsData.status}}</p>
 
         </div>
-    </ng-container>
+        <br>
+
+    </div>
+    <!-- </ng-container> -->
 
 </div>

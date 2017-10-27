@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 import { OtherComponent } from "./other/other.component";
 import { ProjectsComponent } from "./projectscomponent/projects.component";
 import { ProjectDetailsComponent } from "./projectscomponent/details.component";
+import { DisplayData } from "./projectscomponent/data.service";
 import { AnotherComponent } from "./another/another.component";
 import { BrandNewComponent } from "./brandnewcomp/brandnew.component";
 import { BrandNewMoreComp } from "./brandnewmorecomp/brandnewmorecomp.component";
@@ -106,7 +107,7 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatCheckboxModule
   ],
-  providers: [],
+  providers: [DisplayData],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

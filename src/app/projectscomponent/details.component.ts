@@ -19,13 +19,13 @@ export class ProjectDetailsComponent {
   projectsData = [
     {
       id: 1,
-      name: "All Projects",
+      name: "Project Typescript",
       status: "pending"
     },
     {
       id: 2,
       name: "Projects HTML5",
-      status: "pending"
+      status: "complete"
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ export class ProjectDetailsComponent {
     {
       id: 4,
       name: "Project Android",
-      status: "pending"
+      status: "complete"
     },
     {
       id: 5,
@@ -55,7 +55,7 @@ export class ProjectDetailsComponent {
     {
       id: 8,
       name: "Project Node js",
-      status: "pending"
+      status: "complete"
     }
   ];
 }

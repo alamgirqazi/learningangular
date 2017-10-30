@@ -9,8 +9,13 @@
             <a routerLink="/projects" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
                 true}" class="list-group-item ">
                 All projects</a>
-            <a *ngFor="let proj of projectsData" [routerLink]="proj.id" routerLinkActive="active" class="list-group-item ">
-                {{proj.name}}</a>
+            <!-- <a *NgFor="let proj of projectsData" [routerLink]="proj.id" routerLinkActive="active" class="list-group-item ">
+                {{proj.name}}</a> -->
+            <ng-template ngFor let-proj [ngForOf]="projectsData">
+                <a [routerLink]="proj.id" routerLinkActive="active" class="list-group-item ">
+                    {{proj.name}}</a>
+            </ng-template>
+
 
         </div>
     </div>

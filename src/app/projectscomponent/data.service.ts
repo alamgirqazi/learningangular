@@ -2,9 +2,6 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class DisplayData {
-  //   getData(): Promise<ProjectsData[]> {
-  //     return Promise.resolve(ProjectsData);
-  //   }
   projectsData = [
     {
       id: 1,

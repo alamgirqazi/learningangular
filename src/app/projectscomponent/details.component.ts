@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from "@angular/router";
 import { DisplayData } from "./data.service";
 
 @Component({
-  selector: "project-details",
+  selector: "app-project-details",
   templateUrl: "./details.component.html"
 })
 export class ProjectDetailsComponent {
@@ -13,16 +13,15 @@ export class ProjectDetailsComponent {
     private activatedRoute: ActivatedRoute,
     private displayData: DisplayData
   ) {
-    console.log(displayData.projectsData);
-
+    // console.log(displayData.projectsData);
     // this.projectsData = displayData.projectsData;
   }
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params: Params) => {
-      console.log(params.get("id"));
+      // console.log(params.get("id"));
       this.routeId = params.get("id");
 
-      console.log(this.displayData.projectById(params.get("id")));
+      // console.log(this.displayData.projectById(params.get("id")));
 
       this.projectsData = this.displayData.projectById(params.get("id"));
     });

@@ -2,23 +2,26 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { AppComponent } from "./app.component";
-import { OtherComponent } from "./other/other.component";
-import { ProjectsComponent } from "./projectscomponent/projects.component";
-import { ProjectDetailsComponent } from "./projectscomponent/details.component";
-import { DisplayData } from "./projectscomponent/data.service";
+// import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
+import { HttpModule } from "@angular/http";
+import { MatButtonModule, MatCheckboxModule } from "@angular/material";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AnotherComponent } from "./another/another.component";
+import { AppComponent } from "./app.component";
 import { BrandNewComponent } from "./brandnewcomp/brandnew.component";
 import { BrandNewMoreComp } from "./brandnewmorecomp/brandnewmorecomp.component";
 import { ChildComponent } from "./ChildComponents/child.component";
 import { ChildAComponent } from "./ChildComponents/ChildA.component";
 import { ChildBComponent } from "./ChildComponents/childB.component";
-import { ChildIdComponent } from "./ChildComponents/ChildId.component";
 import { ChildBBComponent } from "./ChildComponents/Childbbcomponent";
+import { ChildIdComponent } from "./ChildComponents/ChildId.component";
 import { ChildIdBComponent } from "./ChildComponents/childIdB.component";
 import { ErrorPage } from "./misccomponents/errorpage.component";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatButtonModule, MatCheckboxModule } from "@angular/material";
+import { OtherComponent } from "./other/other.component";
+import { DisplayData } from "./projectscomponent/data.service";
+import { ProjectDetailsComponent } from "./projectscomponent/details.component";
+import { ProjectsComponent } from "./projectscomponent/projects.component";
 
 const appRoutes: Routes = [
   { path: "abc", component: OtherComponent },
@@ -103,6 +106,7 @@ const appRoutes: Routes = [
       // { enableTracing: true }
       // <-- debugging purposes only
     ),
+    HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule

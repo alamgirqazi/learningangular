@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { DisplayData } from "./data.service";
@@ -11,7 +12,8 @@ export class ProjectDetailsComponent {
   public projectsData: any;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private displayData: DisplayData
+    private displayData: DisplayData,
+    private http: HttpClient
   ) {
     // console.log(displayData.projectsData);
     // this.projectsData = displayData.projectsData;
@@ -20,7 +22,11 @@ export class ProjectDetailsComponent {
     this.activatedRoute.paramMap.subscribe((params: Params) => {
       // console.log(params.get("id"));
       this.routeId = params.get("id");
-
+      this.http
+        .get("https://api.github.com/users/alamgirqazi")
+        .subscribe(data => {
+          console.log(data);
+        });
       // console.log(this.displayData.projectById(params.get("id")));
 
       this.projectsData = this.displayData.projectById(params.get("id"));

@@ -1,5 +1,5 @@
-import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 
 // import { HttpModule } from "@angular/http";
@@ -19,10 +19,10 @@ import { ChildIdComponent } from "./ChildComponents/ChildId.component";
 import { ChildIdBComponent } from "./ChildComponents/childIdB.component";
 import { ErrorPage } from "./misccomponents/errorpage.component";
 import { OtherComponent } from "./other/other.component";
+import { AuthService } from "./projectscomponent/auth.service";
 import { DisplayData } from "./projectscomponent/data.service";
 import { ProjectDetailsComponent } from "./projectscomponent/details.component";
 import { AuthGuard } from "./projectscomponent/guard.service";
-import { AuthService } from "./projectscomponent/auth.service";
 import { ProjectsComponent } from "./projectscomponent/projects.component";
 
 const appRoutes: Routes = [

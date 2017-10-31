@@ -25,7 +25,9 @@ import { AuthService } from "./../projectscomponent/auth.service";
     <p>
       <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
       <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-    </p>`
+    </p>
+    <p>other component</p>
+    `
 })
 export class OtherComponent {
   message: string;

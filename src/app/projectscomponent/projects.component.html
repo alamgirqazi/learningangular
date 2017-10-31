@@ -9,6 +9,7 @@
             <a routerLink="/projects" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
                 true}" class="list-group-item ">
                 All projects</a>
+
             <!-- <a *NgFor="let proj of projectsData" [routerLink]="proj.id" routerLinkActive="active" class="list-group-item ">
                 {{proj.name}}</a> -->
             <ng-template ngFor let-proj [ngForOf]="projectsData">
@@ -21,6 +22,8 @@
     </div>
 
     <div class="col-md-9 ">
+        <button (click)="logout()">Logout</button>
+        <!-- <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button> -->
 
         <router-outlet></router-outlet>
     </div>

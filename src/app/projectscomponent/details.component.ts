@@ -16,6 +16,11 @@ export class ProjectDetailsComponent {
     title: "",
     body: ""
   };
+  public jsonPlaceholderTwo = {
+    id: "",
+    title: "",
+    body: ""
+  };
   public jsonholder: any;
   public apiData: any;
   constructor(
@@ -35,6 +40,11 @@ export class ProjectDetailsComponent {
       this.displayData.dataFromJsonPlaceholder(this.routeId).subscribe(data => {
         this.jsonPlaceholder = data;
       });
+      this.displayData
+        .dataFromJsonPlaceholderTwo(this.routeId)
+        .subscribe(data => {
+          this.jsonPlaceholderTwo = data;
+        });
     });
   }
 }

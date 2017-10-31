@@ -4,8 +4,11 @@ import { Observable } from "rxjs";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 
-interface ItemsResponse {
-  results: {};
+interface InterfaceSearchItem {
+  // results: {};
+  id: number;
+  title: string;
+  body: string;
 }
 
 @Injectable()
@@ -23,6 +26,7 @@ export class DisplayData {
       title: ""
     }
   ];
+
   public url: any;
   constructor(private http: HttpClient) {}
   projectsData = [
@@ -80,41 +84,17 @@ export class DisplayData {
     })[0];
   }
   dataFromApi(): any {
-    this.http
-      .get("https://api.github.com/users/alamgirqazi")
-      .subscribe(data => {
-        this.apidata = data;
-        return this.apidata;
-      });
-    return this.apidata;
+    return this.http.get("https://api.github.com/users/alamgirqazi");
   }
 
   dataFromJsonPlaceholder(num): Observable<any> {
     this.url = "https://jsonplaceholder.typicode.com/posts/" + num;
 
-    return this.http.get(this.url).map(data => {
-      // Read the result field from the JSON response.
-      // console.log(data);
-      return data;
-    });
+    return this.http.get(this.url);
   }
-  // return this.http.get(this.url).subscribe(data => {
-  //   // Read the result field from the JSON response.
-  //   this.jsonapidata = data;
-  //   console.log(this.jsonapidata);
+  dataFromJsonPlaceholderTwo(num): Observable<any> {
+    this.url = "https://jsonplaceholder.typicode.com/posts/" + num + 2;
 
-  //   return data;
-  // });
-
-  // console.log("url", this.url);
-  // this.http.get(this.url).subscribe(
-  //   data => {
-  //     console.log(data);
-  //     return data;
-  //   },
-  //   err => {
-  //     console.log("Error occured.");
-  //   }
-  // );
-  // return this.jsonapidata;
+    return this.http.get(this.url);
+  }
 }

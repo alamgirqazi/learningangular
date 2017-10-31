@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    state: RouterStateSnapshot // RouterStateSnapshot
   ): boolean {
     let url: string = state.url;
 
@@ -29,7 +29,7 @@ export class AuthGuard implements CanActivate {
     this.authService.redirectUrl = url;
 
     // Navigate to the login page with extras
-    this.router.navigate(["/abc"]);
+    this.router.navigate(["/"]);
     return false;
   }
 }

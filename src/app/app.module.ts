@@ -21,6 +21,8 @@ import { ErrorPage } from "./misccomponents/errorpage.component";
 import { OtherComponent } from "./other/other.component";
 import { DisplayData } from "./projectscomponent/data.service";
 import { ProjectDetailsComponent } from "./projectscomponent/details.component";
+import { AuthGuard } from "./projectscomponent/guard.service";
+import { AuthService } from "./projectscomponent/auth.service";
 import { ProjectsComponent } from "./projectscomponent/projects.component";
 
 const appRoutes: Routes = [
@@ -29,7 +31,7 @@ const appRoutes: Routes = [
   {
     path: "projects",
     component: ProjectsComponent,
-
+    canActivate: [AuthGuard],
     children: [
       {
         path: "",
@@ -111,7 +113,7 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatCheckboxModule
   ],
-  providers: [DisplayData],
+  providers: [DisplayData, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

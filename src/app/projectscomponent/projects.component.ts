@@ -11,5 +11,7 @@ export class ProjectsComponent {
 
   ngOnInit() {
     this.projectsData = this.displayData.projects;
+    // this.a = this.displayData.apidata;
+    // console.log(this.a);
   }
 }

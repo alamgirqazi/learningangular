@@ -13,19 +13,19 @@ interface InterfaceSearchItem {
 
 @Injectable()
 export class DisplayData {
-  public apidata: any = [
-    {
-      id: "",
-      login: ""
-    }
-  ];
-  public jsonapidata: any = [
-    {
-      id: "",
-      body: "",
-      title: ""
-    }
-  ];
+  // public apidata: any = [
+  //   {
+  //     id: "",
+  //     login: ""
+  //   }
+  // ];
+  // public jsonapidata: any = [
+  //   {
+  //     id: "",
+  //     body: "",
+  //     title: ""
+  //   }
+  // ];
 
   public url: any;
   constructor(private http: HttpClient) {}

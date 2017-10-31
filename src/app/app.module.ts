@@ -28,6 +28,11 @@ import { ProjectsComponent } from "./projectscomponent/projects.component";
 const appRoutes: Routes = [
   { path: "abc", component: OtherComponent },
   { path: "", component: OtherComponent },
+  { path: "lazy", loadChildren: "./lazymodule/lazy.module#LazyModule" },
+  {
+    path: "example",
+    loadChildren: "./ExampleModule/example.module#ExampleModule"
+  },
   {
     path: "projects",
     component: ProjectsComponent,
@@ -43,45 +48,6 @@ const appRoutes: Routes = [
       }
     ]
   }
-  // { path: "brandnew", component: BrandNewComponent },
-  // { path: "brandnew/more", component: BrandNewMoreComp },
-  // { path: "xyz", component: AnotherComponent },
-
-  // {
-  //   path: "child",
-  //   component: ChildComponent,
-  //   children: [
-  //     {
-  //       path: "a",
-  //       component: ChildAComponent,
-  //       children: [
-  //         {
-  //           path:  "",
-  //           component: ErrorPage
-  //         },
-  //         {
-  //           path: ":id",
-  //           component: ChildIdComponent
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       path: "b",
-  //       component: ChildBComponent,
-  //       children: [
-  //         {
-  //           path: "b",
-  //           component: ChildBBComponent
-  //         },
-  //         {
-  //           path: ":id",
-  //           component: ChildIdBComponent
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // }
-  // { path: "**", component: ErrorPage }
 ];
 
 @NgModule({

@@ -3,7 +3,8 @@ import { Router } from "@angular/router";
 import { ExampleModel } from "./example.model";
 @Component({
   selector: "app-example",
-  templateUrl: "./example.template.html"
+  templateUrl: "./example.template.html",
+  styleUrls: ["./example.style.css"]
 })
 export class ExampleComponent {
   constructor(public router: Router) {}

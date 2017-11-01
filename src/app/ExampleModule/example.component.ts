@@ -8,12 +8,17 @@ import { ExampleModel } from "./example.model";
 })
 export class ExampleComponent {
   constructor(public router: Router) {}
-  model1 = true;
-  model2 = true;
-  model3 = true;
+
   powers = ["Really Smart", "Super Flexible", "Super Hot", "Weather Changer"];
 
-  model = new ExampleModel(18, "Dr IQ", this.powers[0], "Chuck Overstreet");
+  model = new ExampleModel(
+    18,
+    "Dr IQ",
+    this.powers[0],
+    "",
+    "",
+    "Chuck Overstreet"
+  );
 
   submitted = false;
   goToReactiveForms() {
@@ -22,9 +27,12 @@ export class ExampleComponent {
   goToTemplateDrivenForms() {
     this.router.navigate(["/example/templatedriven"]);
   }
-  onSubmit(heroForm: any) {
-    this.submitted = true;
-    console.log(heroForm);
+
+  // @parameters
+  // heroForm - #heroForm template variable of form
+  //
+
+  checkChangedValues(heroForm: any) {
     const formControls = heroForm.controls;
     if (heroForm.pristine === true) {
       console.log("nothing changed");
@@ -40,20 +48,10 @@ export class ExampleComponent {
       }
     }
   }
-  doSomething(newValue): any {
-    this.model.name = newValue;
-    console.log(newValue);
-    return false;
-  }
-  alterEgo(newValue) {
-    this.model.alterEgo = newValue;
-    console.log(newValue);
-    return false;
-  }
-  alterPower(newValue) {
-    this.model.power = newValue;
-    console.log(newValue);
-    return false;
+  onSubmit(heroForm: any) {
+    this.submitted = true;
+    console.log(heroForm);
+    this.checkChangedValues(heroForm);
   }
   // TODO: Remove this when we're done
   get diagnostic() {

@@ -17,6 +17,9 @@ export class ExampleComponent {
   goToReactiveForms() {
     this.router.navigate(["/example/reactive"]);
   }
+  goToTemplateDrivenForms() {
+    this.router.navigate(["/example/templatedriven"]);
+  }
   onSubmit() {
     this.submitted = true;
   }

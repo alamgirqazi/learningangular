@@ -1,0 +1,31 @@
+<h2>Template Driven Forms</h2>
+
+<!-- <form novalidate #f="ngForm">
+    <label>
+        <span>Full name</span>
+        <input type="text" placeholder="Your full name" name="name" ngModel>
+         <input type="text" placeholder="Your full name" name="name" [ngModel]="user.name"> -->
+<!-- </label>
+    <label>
+        <span>First name</span>
+        <input type="text" placeholder="Your full name" name="firstname" [ngModel]="user.name">
+    </label>
+</form> -->
+<form novalidate (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <label>
+        <span>Full name</span>
+        <input type="text" placeholder="Your full name" name="name" required ngModel>
+    </label>
+    <div ngModelGroup="account">
+        <label>
+            <span>Email address</span>
+            <input type="email" placeholder="Your email address" name="email" required ngModel>
+        </label>
+        <label>
+            <span>Confirm address</span>
+            <input type="email" placeholder="Confirm your email address" required name="confirm" ngModel>
+        </label>
+    </div>
+    <button type="submit" [disabled]="f.invalid">Sign up</button>
+</form>
+{{ f.value | json }}

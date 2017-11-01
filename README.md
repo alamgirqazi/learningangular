@@ -6,10 +6,10 @@ Learning Angular js 2
 
 Features: 
 
-Routing
-Guards for routing
-Lazy Loading Modules
-Forms
+* Routing
+* Guards for routing
+* Lazy Loading Modules
+* Forms
 
 ## Development
 

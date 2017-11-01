@@ -17,6 +17,7 @@ import { ChildBComponent } from "./ChildComponents/childB.component";
 import { ChildBBComponent } from "./ChildComponents/Childbbcomponent";
 import { ChildIdComponent } from "./ChildComponents/ChildId.component";
 import { ChildIdBComponent } from "./ChildComponents/childIdB.component";
+import { ExampleModule } from "./ExampleModule/example.module";
 import { ErrorPage } from "./misccomponents/errorpage.component";
 import { OtherComponent } from "./other/other.component";
 import { AuthService } from "./projectscomponent/auth.service";
@@ -24,11 +25,14 @@ import { DisplayData } from "./projectscomponent/data.service";
 import { ProjectDetailsComponent } from "./projectscomponent/details.component";
 import { AuthGuard } from "./projectscomponent/guard.service";
 import { ProjectsComponent } from "./projectscomponent/projects.component";
-
 const appRoutes: Routes = [
   { path: "abc", component: OtherComponent },
   { path: "", component: OtherComponent },
   { path: "lazy", loadChildren: "./lazymodule/lazy.module#LazyModule" },
+  // {
+  //   path: "example",
+  //   loadChildren: () => ExampleModule
+  // },
   {
     path: "example",
     loadChildren: "./ExampleModule/example.module#ExampleModule"

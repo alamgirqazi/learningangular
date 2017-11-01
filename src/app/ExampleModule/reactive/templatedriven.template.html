@@ -24,7 +24,7 @@
         </div>
     </label>
 
-    <div ngModelGroup="account">
+    <div ngModelGroup="account" #userAccount="ngModelGroup">
         <label>
             <span>Email address</span>
             <input type="email" placeholder="Your email address" name="email" required ngModel>
@@ -33,6 +33,11 @@
             <span>Confirm address</span>
             <input type="email" placeholder="Confirm your email address" required name="confirm" ngModel>
         </label>
+
+
+        <div *ngIf="userAccount.invalid && userAccount.touched" class="error">
+            Both emails are required
+        </div>
     </div>
     <button type="submit" [disabled]="f.invalid">Sign up</button>
 </form>

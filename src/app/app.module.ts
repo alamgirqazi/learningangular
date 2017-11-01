@@ -23,6 +23,8 @@ import { OtherComponent } from "./other/other.component";
 import { AuthService } from "./projectscomponent/auth.service";
 import { DisplayData } from "./projectscomponent/data.service";
 import { ProjectDetailsComponent } from "./projectscomponent/details.component";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+
 import { AuthGuard } from "./projectscomponent/guard.service";
 import { ProjectsComponent } from "./projectscomponent/projects.component";
 const appRoutes: Routes = [
@@ -79,6 +81,7 @@ const appRoutes: Routes = [
       // <-- debugging purposes only
     ),
     HttpClientModule,
+    NgbModule.forRoot(),
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule

@@ -10,9 +10,10 @@ import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms"; // <-- #1 import module
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
-  imports: [routing, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [routing, CommonModule, FormsModule, ReactiveFormsModule, NgbModule],
   declarations: [
     ExampleComponent,
     ReactiveComponent,

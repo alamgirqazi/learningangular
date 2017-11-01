@@ -14,8 +14,16 @@
 <form novalidate (ngSubmit)="onSubmit(f)" #f="ngForm">
     <label>
         <span>Full name</span>
-        <input type="text" placeholder="Your full name" name="name" required ngModel>
+        <input type="text" #userName="ngModel" placeholder="Your full name" minlength="2" name="name" required ngModel>
+
+        <div *ngIf="userName.errors?.required && userName.touched" class="error">
+            Name is required
+        </div>
+        <div *ngIf="userName.errors?.minlength && userName.touched" class="error">
+            Minimum of 2 characters
+        </div>
     </label>
+
     <div ngModelGroup="account">
         <label>
             <span>Email address</span>

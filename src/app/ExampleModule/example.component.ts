@@ -14,7 +14,9 @@ export class ExampleComponent {
   model = new ExampleModel(18, "Dr IQ", this.powers[0], "Chuck Overstreet");
 
   submitted = false;
-
+  goToReactiveForms() {
+    this.router.navigate(["/example/reactive"]);
+  }
   onSubmit() {
     this.submitted = true;
   }

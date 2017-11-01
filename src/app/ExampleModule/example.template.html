@@ -1,8 +1,10 @@
 <div class="container">
-  {{diagnostic}}
+  <button (click)="goToReactiveForms()" type="button" class="btn btn-success">Reactive forms</button>
+  <br>
+  <br> {{diagnostic}}
 
   <h1>Hero Form</h1>
-  <form>
+  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" #name="ngModel" id="name" required [(ngModel)]="model.name" name="name">
@@ -22,7 +24,9 @@
         <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
       </select>
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
 
   </form>
 </div>
+
+<router-outlet></router-outlet>

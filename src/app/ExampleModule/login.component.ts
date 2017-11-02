@@ -56,8 +56,8 @@ export class LoginComponent {
         console.log(data);
         localStorage.setItem("id_token", JSON.stringify(data));
         localStorage.setItem("id", data["id"]);
-        let val = localStorage.getItem("id_token");
-        console.log("TTL", val["ttl"]);
+        localStorage.setItem("ttl", data["ttl"]);
+        localStorage.setItem("userId", data["userId"]);
       });
     this.auth.login(credentials);
   }

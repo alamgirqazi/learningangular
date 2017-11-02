@@ -6,10 +6,17 @@ import "rxjs/add/operator/do";
 import { Observable } from "rxjs/Observable";
 import { HttpClient } from "@angular/common/http";
 import "rxjs/add/operator/map";
+import { tokenNotExpired } from "angular2-jwt";
+
+// interface InterfaceUserAuth{
+
+// }
 @Injectable()
 export class AuthService {
   isLoggedIn = false;
-
+  loggedIn() {
+    return tokenNotExpired();
+  }
   // // store the URL so we can redirect after logging in
   // redirectUrl: string;
 
@@ -26,10 +33,13 @@ export class AuthService {
 
   login(credentials) {
     console.log(Math.floor(Math.random() * 10) + 1);
-    this.http.get("https://jsonplaceholder.typicode.com/users/1").subscribe(
+    const url =
+      "https://jsonplaceholder.typicode.com/users/" +
+      (Math.floor(Math.random() * 10) + 1);
+    this.http.get(url).subscribe(
       // We're assuming the response will be an object
       // with the JWT on an id_token key
-      data => localStorage.setItem("id_token", credentials),
+      data => localStorage.setItem("id_token", data["id"]),
       // data => localStorage.setItem("id_token", JSON.stringify(data)),
       error => console.log(error)
     );

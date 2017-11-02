@@ -10,7 +10,8 @@ interface Credentials {
 @Component({
   selector: "app-login",
   template: `
-    <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
+ <h2 *ngIf="auth.loggedIn()">Wow you're logged in</h2> 
+    <form #f="ngForm" (ngSubmit)="onLogin(f.value)"  *ngIf="!auth.loggedIn()">
     <br>
     <br>
       <input type="text" placeholder="username" #username="ngModel" class="form-control" required name="username" ngModel ngControl="username">

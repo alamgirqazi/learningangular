@@ -39,10 +39,20 @@ export class AuthService {
     this.http.get(url).subscribe(
       // We're assuming the response will be an object
       // with the JWT on an id_token key
-      data => localStorage.setItem("id_token", data["id"]),
+      data => {
+        console.log(data);
+        localStorage.setItem("id_token", data["id"]);
+        localStorage.setItem("name", data["name"]);
+        localStorage.setItem("data", JSON.stringify(data));
+      },
       // data => localStorage.setItem("id_token", JSON.stringify(data)),
       error => console.log(error)
     );
     console.log(credentials);
   }
 }
+// this.http
+// .post('/api/items/add', body, {
+//   headers: new HttpHeaders().set('Authorization', 'my-auth-token'),
+// })
+// .subscribe();

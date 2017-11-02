@@ -42,7 +42,7 @@ const appRoutes: Routes = [
   {
     path: "projects",
     component: ProjectsComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {
         path: "",

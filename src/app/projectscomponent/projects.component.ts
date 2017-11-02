@@ -14,12 +14,12 @@ export class ProjectsComponent {
     public authService: AuthService,
     public router: Router
   ) {}
-  logout() {
-    this.authService.logout();
-    this.router.navigate(["/"]);
+  // logout() {
+  //   this.authService.logout();
+  //   this.router.navigate(["/"]);
 
-    // this.setMessage();
-  }
+  //   // this.setMessage();
+  // }
   ngOnInit() {
     this.projectsData = this.displayData.projects;
     // this.a = this.displayData.apidata;

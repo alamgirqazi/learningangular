@@ -22,10 +22,6 @@ import { AuthService } from "./../projectscomponent/auth.service";
   template: `
     <h2>LOGIN</h2>
     <p>{{message}}</p>
-    <p>
-      <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-      <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-    </p>
     <p>other component</p>
     `
 })
@@ -40,26 +36,30 @@ export class OtherComponent {
     this.message = "Logged " + (this.authService.isLoggedIn ? "in" : "out");
   }
 
-  login() {
-    this.message = "Trying to log in ...";
+  // login() {
+  //   this.message = "Trying to log in ...";
 
-    this.authService.login().subscribe(() => {
-      this.setMessage();
-      if (this.authService.isLoggedIn) {
-        // Get the redirect URL from our auth service
-        // If no redirect has been set, use the default
-        let redirect = this.authService.redirectUrl
-          ? this.authService.redirectUrl
-          : "/projects";
+  //   this.authService.login().subscribe(() => {
+  //     this.setMessage();
+  //     if (this.authService.isLoggedIn) {
+  //       // Get the redirect URL from our auth service
+  //       // If no redirect has been set, use the default
+  //       let redirect = this.authService.redirectUrl
+  //         ? this.authService.redirectUrl
+  //         : "/projects";
 
-        // Redirect the user
-        this.router.navigate([redirect]);
-      }
-    });
-  }
+  //       // Redirect the user
+  //       this.router.navigate([redirect]);
+  //     }
+  //   });
+  // }
 
-  logout() {
-    this.authService.logout();
-    this.setMessage();
-  }
+  // logout() {
+  //   this.authService.logout();
+  //   this.setMessage();
+  // }
 }
+// <p>
+//   <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
+//   <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+// </p>

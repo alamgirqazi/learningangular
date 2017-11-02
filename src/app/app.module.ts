@@ -24,7 +24,8 @@ import { AuthService } from "./projectscomponent/auth.service";
 import { DisplayData } from "./projectscomponent/data.service";
 import { ProjectDetailsComponent } from "./projectscomponent/details.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-
+// import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { TokenInterceptor } from "./token.interceptor";
 import { AuthGuard } from "./projectscomponent/guard.service";
 import { ProjectsComponent } from "./projectscomponent/projects.component";
 const appRoutes: Routes = [
@@ -86,7 +87,16 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatCheckboxModule
   ],
-  providers: [DisplayData, AuthGuard, AuthService],
+  providers: [
+    DisplayData,
+    AuthGuard,
+    AuthService,
+    {
+      provide: HttpClientModule,
+      useClass: TokenInterceptor
+      // multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

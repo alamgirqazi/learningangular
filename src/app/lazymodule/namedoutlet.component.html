@@ -1,5 +1,5 @@
 <h2>Testing Router Outlet</h2>
-<a [routerLink]="[{ outlets: { routerA: ['abc'] } }]">test first outlet</a>
+<a [routerLink]="[{ outlets: { routerA: ['abc'] } }]" skipLocationChange>test first outlet</a>
 <br>
 <a [routerLink]="[{ outlets: { routerB: ['xyz'] } }]">test second outlet</a>
 

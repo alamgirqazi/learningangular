@@ -1,0 +1,10 @@
+<h2>Testing Router Outlet</h2>
+<a [routerLink]="[{ outlets: { routerA: ['abc'] } }]">test first outlet</a>
+<br>
+<a [routerLink]="[{ outlets: { routerB: ['xyz'] } }]">test second outlet</a>
+
+<router-outlet name="routerA"></router-outlet>
+
+<h4>Second Router</h4>
+
+<router-outlet name="routerB"></router-outlet>

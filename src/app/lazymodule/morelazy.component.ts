@@ -1,7 +1,32 @@
 import { Component } from "@angular/core";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  template: `<h3>More Component</h3>
-  `
+  templateUrl: "./morelazy.component.html"
 })
-export class MoreLazyComponent {}
+export class MoreLazyComponent {
+  closeResult: string;
+
+  constructor(private modalService: NgbModal) {}
+
+  open(content) {
+    this.modalService.open(content).result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+}

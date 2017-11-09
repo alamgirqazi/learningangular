@@ -2,12 +2,14 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
 import { DisplayData } from "./data.service";
+import { Observable } from "rxjs/Observable";
 @Component({
   selector: "app-projects",
   templateUrl: "./projects.component.html"
 })
 export class ProjectsComponent {
-  private projectsData: any;
+  private projectsData: Observable<any>;
+  // private projectsData: any;
   private a: any;
   constructor(
     private displayData: DisplayData,

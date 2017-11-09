@@ -9,6 +9,7 @@ import { RouteraComponent } from "./routera.component";
 import { RouterbComponent } from "./routerb.component";
 import { PlazyComponent } from "./plazy.component";
 import { ClazyComponent } from "./clazy.component";
+import { LazyService } from "./lazy.service";
 @NgModule({
   imports: [routing, NgbModule],
   declarations: [
@@ -19,6 +20,7 @@ import { ClazyComponent } from "./clazy.component";
     RouteraComponent,
     ClazyComponent,
     PlazyComponent
-  ]
+  ],
+  providers: [LazyService]
 })
 export class LazyModule {}

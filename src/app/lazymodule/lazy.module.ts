@@ -7,6 +7,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { NamedoutletComponent } from "./namedoutlet.component";
 import { RouteraComponent } from "./routera.component";
 import { RouterbComponent } from "./routerb.component";
+import { PlazyComponent } from "./plazy.component";
+import { ClazyComponent } from "./clazy.component";
 @NgModule({
   imports: [routing, NgbModule],
   declarations: [
@@ -14,7 +16,9 @@ import { RouterbComponent } from "./routerb.component";
     MoreLazyComponent,
     NamedoutletComponent,
     RouterbComponent,
-    RouteraComponent
+    RouteraComponent,
+    ClazyComponent,
+    PlazyComponent
   ]
 })
 export class LazyModule {}

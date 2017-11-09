@@ -6,10 +6,14 @@ import { MoreLazyComponent } from "./morelazy.component";
 import { NamedoutletComponent } from "./namedoutlet.component";
 import { RouteraComponent } from "./routera.component";
 import { RouterbComponent } from "./routerb.component";
+import { PlazyComponent } from "./plazy.component";
+import { ClazyComponent } from "./clazy.component";
 
 const routes: Routes = [
   { path: "", component: LazyComponent },
   { path: "more", component: MoreLazyComponent },
+  { path: "plazy", component: PlazyComponent },
+  { path: "clazy", component: ClazyComponent },
   {
     path: "namedoutlet",
     component: NamedoutletComponent,

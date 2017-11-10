@@ -5,13 +5,14 @@ import { DisplayData } from "./../projectscomponent/data.service";
   template: `<h3>Parent Lazy</h3>
 
 <ul>
-<li *ngFor="let res of results; trackBy: trackById;let i = index;"> 
+<ng-template [ngForOf]="results" let-res ngFor let-i="index" >
+<li> 
   {{ res.body }}
   <br> <button (click)="delete(i)">X</button>
   <br><br> <button (click)="update(i)">Update</button>
   <br>
   <br>
-</li>
+</li></ng-template>
 </ul>
   `
 })
@@ -43,3 +44,4 @@ export class PlazyComponent {
     this.results = await this.data.getPosts();
   }
 }
+// ngFor="trackBy: trackById;let i = index;"

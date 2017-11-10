@@ -78,9 +78,12 @@ export class DisplayData {
 
     return this.http.get(this.url);
   }
-  dataFromJsonPlaceholderTwo(num): Observable<any> {
+  async dataFromJsonPlaceholderTwo(num): Promise<any> {
     this.url = "https://jsonplaceholder.typicode.com/posts/" + num + 2;
-
-    return this.http.get(this.url);
+    const response = await this.http
+      .get<InterfaceSearchItem>(this.url)
+      .toPromise();
+    console.log(response);
+    return response;
   }
 }

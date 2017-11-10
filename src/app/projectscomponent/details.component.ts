@@ -42,6 +42,7 @@ export class ProjectDetailsComponent implements OnInit {
     // console.log(displayData.projectsData);
     // this.projectsData = displayData.projectsData;
   }
+
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params: Params) => {
       // console.log(params.get("id"));
@@ -52,17 +53,18 @@ export class ProjectDetailsComponent implements OnInit {
         this.jsonPlaceholder = data;
       });
 
-      // this.subscription = this.displayData
-      //   .dataFromJsonPlaceholder(this.routeId)
-      //   .subscribe(message => {
-      //     this.jsonPlaceholderTwo = message;
-      //   });
-
-      this.displayData
-        .dataFromJsonPlaceholderTwo(this.routeId)
-        .subscribe(data => {
-          this.jsonPlaceholderTwo = data;
-        });
+      //   this.subscription = this.displayData
+      //     .dataFromJsonPlaceholder(this.routeId)
+      //     .subscribe(message => {
+      //       this.jsonPlaceholderTwo = message;
+      //     });
+      this.holderTwo();
     });
+  }
+
+  async holderTwo() {
+    this.jsonPlaceholderTwo = await this.displayData.dataFromJsonPlaceholderTwo(
+      this.routeId
+    );
   }
 }

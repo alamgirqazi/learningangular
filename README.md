@@ -1,8 +1,8 @@
-# Learning Angular 4
+## Angular 4 learning playground
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.7.
 
-Learning Angular js 4
+Angular 4 learning playground
 
 Features: 
 

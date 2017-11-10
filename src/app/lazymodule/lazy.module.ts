@@ -13,9 +13,11 @@ import { LazyService } from "./lazy.service";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { DisplayData } from "./../projectscomponent/data.service";
+import { FilterPipe } from "./../search.pipe";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
-  imports: [routing, NgbModule, HttpClientModule, CommonModule],
+  imports: [routing, NgbModule, HttpClientModule, CommonModule, FormsModule],
   declarations: [
     LazyComponent,
     MoreLazyComponent,
@@ -23,7 +25,8 @@ import { DisplayData } from "./../projectscomponent/data.service";
     RouterbComponent,
     RouteraComponent,
     ClazyComponent,
-    PlazyComponent
+    PlazyComponent,
+    FilterPipe
   ],
   providers: [LazyService, DisplayData]
 })

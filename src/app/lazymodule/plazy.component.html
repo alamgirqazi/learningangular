@@ -1,0 +1,22 @@
+<h3>Parent Lazy</h3>
+
+<div>Search: </div>
+<input (keyup)="search($event.target.value)" />
+<div>Search using filter: </div>
+<input [(ngModel)]="filterString" />
+
+<ul>
+    <!-- <ng-template [ngForOf]="filteredResults" let-res ngFor let-i="index"> -->
+    <li *ngFor="let res of (filteredResults | FilterSearch: filterString)">
+
+        {{ res.body }}
+        <br>
+        <button (click)="delete(i)">X</button>
+        <br>
+        <br>
+        <button (click)="update(i)">Update</button>
+        <br>
+        <br>
+    </li>
+    <!-- </ng-template> -->
+</ul>

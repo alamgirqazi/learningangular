@@ -2,21 +2,7 @@ import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { DisplayData } from "./../projectscomponent/data.service";
 @Component({
-  template: `<h3>Parent Lazy</h3>
-  
- <div>Search: </div> <input (keyup)="search($event.target.value)" />
-  
-<ul>
-<ng-template [ngForOf]="filteredResults" let-res ngFor let-i="index" >
-<li> 
-  {{ res.body }}
-  <br> <button (click)="delete(i)">X</button>
-  <br><br> <button (click)="update(i)">Update</button>
-  <br>
-  <br>
-</li></ng-template>
-</ul>
-  `
+  templateUrl: "./plazy.component.html"
 })
 export class PlazyComponent {
   private results;
@@ -24,6 +10,8 @@ export class PlazyComponent {
   constructor(private http: HttpClient, private data: DisplayData) {
     this.getResults();
   }
+
+  filterString = "";
   search(val: any) {
     if (!val) {
       this.filteredResults = this.results;

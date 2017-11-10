@@ -3,9 +3,11 @@ import { HttpClient } from "@angular/common/http";
 import { DisplayData } from "./../projectscomponent/data.service";
 @Component({
   template: `<h3>Parent Lazy</h3>
-
+  
+ <div>Search: </div> <input (keyup)="search($event.target.value)" />
+  
 <ul>
-<ng-template [ngForOf]="results" let-res ngFor let-i="index" >
+<ng-template [ngForOf]="filteredResults" let-res ngFor let-i="index" >
 <li> 
   {{ res.body }}
   <br> <button (click)="delete(i)">X</button>
@@ -18,17 +20,18 @@ import { DisplayData } from "./../projectscomponent/data.service";
 })
 export class PlazyComponent {
   private results;
+  private filteredResults;
   constructor(private http: HttpClient, private data: DisplayData) {
     this.getResults();
   }
-  myId(index, res) {
-    console.log(res);
-    return res ? res.id : undefined;
+  search(val: any) {
+    if (!val) {
+      this.filteredResults = this.results;
+    }
+    this.filteredResults = this.results.filter(
+      res => res.body.indexOf(val) >= 0
+    );
   }
-  trackById(index: number, res: any): number {
-    return res.id;
-  }
-
   clicked(res) {
     alert(JSON.stringify(res));
   }
@@ -42,6 +45,7 @@ export class PlazyComponent {
   }
   async getResults() {
     this.results = await this.data.getPosts();
+    this.filteredResults = this.results;
   }
 }
 // ngFor="trackBy: trackById;let i = index;"

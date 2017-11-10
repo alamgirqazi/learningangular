@@ -49,17 +49,26 @@ export class ProjectDetailsComponent implements OnInit {
       this.routeId = params.get("id");
       this.projectsData = this.displayData.projectById(params.get("id"));
 
-      this.displayData.dataFromJsonPlaceholder(this.routeId).subscribe(data => {
-        this.jsonPlaceholder = data;
-      });
+      this.displayData.dataFromJsonPlaceholder(this.routeId).subscribe(
+        data => {
+          this.jsonPlaceholder = data;
+        },
+        err => {
+          console.log("Something went wrong!");
+        }
+      );
 
       //   this.subscription = this.displayData
       //     .dataFromJsonPlaceholder(this.routeId)
       //     .subscribe(message => {
       //       this.jsonPlaceholderTwo = message;
       //     });
+      this.getPostData();
       this.holderTwo();
     });
+  }
+  async getPostData() {
+    const res = await this.displayData.getPosts();
   }
 
   async holderTwo() {

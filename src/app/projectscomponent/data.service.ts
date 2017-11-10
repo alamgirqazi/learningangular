@@ -10,7 +10,6 @@ interface InterfaceSearchItem {
   title: string;
   body: string;
 }
-
 @Injectable()
 export class DisplayData {
   public url: any;
@@ -57,6 +56,7 @@ export class DisplayData {
       status: "complete"
     }
   ];
+  sampleurl: string;
 
   get projects(): any {
     return this.projectsData;
@@ -85,5 +85,14 @@ export class DisplayData {
       .toPromise();
     console.log(response);
     return response;
+  }
+
+  async getPosts(): Promise<any> {
+    const result = await this.http
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .toPromise();
+    console.log("result");
+    console.log(result);
+    return result;
   }
 }

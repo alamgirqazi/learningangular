@@ -10,11 +10,12 @@ import { RouterbComponent } from "./routerb.component";
 import { PlazyComponent } from "./plazy.component";
 import { ClazyComponent } from "./clazy.component";
 import { LazyService } from "./lazy.service";
+import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { DisplayData } from "./../projectscomponent/data.service";
 
 @NgModule({
-  imports: [routing, NgbModule, HttpClientModule],
+  imports: [routing, NgbModule, HttpClientModule, CommonModule],
   declarations: [
     LazyComponent,
     MoreLazyComponent,

@@ -95,4 +95,6 @@ export class DisplayData {
     console.log(result);
     return result;
   }
+
+  deleteItem(res) {}
 }

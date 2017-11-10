@@ -5,8 +5,9 @@ import { DisplayData } from "./../projectscomponent/data.service";
   template: `<h3>Parent Lazy</h3>
 
 <ul>
-<li *ngFor="let res of results" (click)="clicked(res)"> 
+<li *ngFor="let res of results; trackBy: trackById;let i = index;"> 
   {{ res.body }}
+  <br> <span (click)="delete(i)">X</span>
 </li>
 </ul>
   `
@@ -20,8 +21,17 @@ export class PlazyComponent {
     console.log(res);
     return res ? res.id : undefined;
   }
+  trackById(index: number, res: any): number {
+    return res.id;
+  }
+
   clicked(res) {
     alert(JSON.stringify(res));
+  }
+  delete(index) {
+    this.results.splice(index, 1);
+    console.log(this.results);
+    // alert(JSON.stringify(res));
   }
   async getResults() {
     this.results = await this.data.getPosts();

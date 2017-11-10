@@ -37,11 +37,13 @@ export class PlazyComponent {
   }
   delete(index) {
     this.results.splice(index, 1);
+    this.filteredResults.splice(index, 1);
     console.log(this.results);
     // alert(JSON.stringify(res));
   }
   update(index) {
     this.results[Object.keys(this.results)[index]].body = "Updated";
+    this.filteredResults[Object.keys(this.results)[index]].body = "Updated";
   }
   async getResults() {
     this.results = await this.data.getPosts();

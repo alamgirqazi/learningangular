@@ -7,9 +7,9 @@
 
 <ul>
     <!-- <ng-template [ngForOf]="filteredResults" let-res ngFor let-i="index"> -->
-    <li *ngFor="let res of (filteredResults | FilterSearch: filterString)">
+    <li *ngFor="let res of (filteredResults | FilterSearch: filterString); let i = index;">
 
-        {{ res.body }}
+        {{ res | json }}
         <br>
         <button (click)="delete(i)">X</button>
         <br>

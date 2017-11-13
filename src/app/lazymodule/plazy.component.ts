@@ -24,12 +24,14 @@ export class PlazyComponent {
     alert(JSON.stringify(res));
   }
   delete(index) {
+    console.log("delete index", index);
     this.results.splice(index, 1);
     this.filteredResults.splice(index, 1);
     console.log(this.results);
     // alert(JSON.stringify(res));
   }
   update(index) {
+    console.log("update index", index);
     this.results[Object.keys(this.results)[index]].body = "Updated";
     this.filteredResults[Object.keys(this.results)[index]].body = "Updated";
   }

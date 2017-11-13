@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { AuthService } from "./../projectscomponent/auth.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { AuthHttp } from "angular2-jwt";
 
 interface Credentials {
   username: string;
@@ -64,28 +63,22 @@ export class LoginComponent {
   isUserError: boolean;
   errorText = "";
   constructor(private auth: AuthService, private http: HttpClient) {}
-//   showError(): boolean
-// {if(this.isError === true && username.valid)
-//  return true;
-//  else return false
+  //   showError(): boolean
+  // {if(this.isError === true && username.valid)
+  //  return true;
+  //  else return false
 
-// }
-changeVal(username)
-{
-  console.log("value changed")
-  console.log(username);
-if(username.valid)
-this.isUserError = false;
-
-}
-changePassVal(password)
-{
-  console.log("value changed")
-  console.log(password);
-if(password.valid)
-this.isPassError = false;
-
-}
+  // }
+  changeVal(username) {
+    console.log("value changed");
+    console.log(username);
+    if (username.valid) this.isUserError = false;
+  }
+  changePassVal(password) {
+    console.log("value changed");
+    console.log(password);
+    if (password.valid) this.isPassError = false;
+  }
   onLogin(credentials) {
     // let url = "http://localhost:3000/users/login"
 
@@ -118,8 +111,8 @@ this.isPassError = false;
           console.log("Something went wrong!");
           console.log(err);
           this.isError = true;
-          this.errorText = "Error! Wrong credentials"; 
-               this.isSuccess = false;
+          this.errorText = "Error! Wrong credentials";
+          this.isSuccess = false;
           this.isUserError = true;
           this.isPassError = true;
         }

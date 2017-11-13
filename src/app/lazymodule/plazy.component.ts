@@ -16,9 +16,7 @@ export class PlazyComponent {
     if (!val) {
       this.filteredResults = this.results;
     }
-    this.filteredResults = this.results.filter(
-      res => res.body.indexOf(val) >= 0
-    );
+    this.filteredResults = this.results.filter(res => res.body.indexOf(val) >= 0);
   }
   clicked(res) {
     alert(JSON.stringify(res));

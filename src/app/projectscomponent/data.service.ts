@@ -93,6 +93,26 @@ export class DisplayData {
   }
 
   public verifyUser(credentials): Observable<any> {
+    // let _method: string = "POST";
+    // let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    // "/customers/login";
+    // let _routeParams: any = {};
+    // let _postBody: any = {
+    //   credentials: credentials
+    // };
+    // let _urlParams: any = {};
+    // if (include) _urlParams.include = include;
+    // let result = this.request(_method, _url, _routeParams, _urlParams, _postBody)
+    //   .map(
+    //     (response: any) => {
+    //       response.ttl = parseInt(response.ttl);
+    //       response.rememberMe = rememberMe;
+    //       this.auth.setToken(response);
+    //       return response;
+    //     }
+    //   );
+    //   return result;
+
     return this.http
       .post(
         "http://localhost:3000/api/Users/login",

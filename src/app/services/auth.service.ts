@@ -21,9 +21,9 @@ export class Auth0Service {
       // this.load("user"),
       this.load("userId"),
       // this.load("issuedAt"),
-      this.load("created"),
-      this.load("ttl")
-      // this.load("rememberMe")
+      // this.load("created"),
+      this.load("ttl"),
+      this.load("rememberMe")
     ]);
     this.token.id = results[0];
     // this.token.user = results[1];
@@ -58,8 +58,8 @@ export class Auth0Service {
   }
   public setToken(token: SDKToken): void {
     this.token = Object.assign(this.token, token);
-    console.log("this.token");
-    console.log(this.token);
+    // console.log("this.token");
+    // console.log(this.token);
     this.save();
   }
   protected async load(prop: string): Promise<any> {

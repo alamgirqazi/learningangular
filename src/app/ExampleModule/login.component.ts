@@ -96,16 +96,7 @@ export class LoginComponent {
     if (password.valid) this.isPassError = false;
   }
   onLogin(credentials) {
-    // this.userService.getStu().subscribe(
-    //   data => {
-    //     this.jsonPlaceholder = data;
-    //     console.log(this.jsonPlaceholder);
-    //   },
-    //   err => {
-    //     console.log("Something went wrong!");
-    //   }
-    // );
-    console.log(this.displayData.projects);
+    // console.log(this.displayData.projects);
     console.log(credentials);
     this.getPostDat();
   }

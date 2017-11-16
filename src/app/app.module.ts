@@ -3,10 +3,12 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 
 // import { HttpModule } from "@angular/http";
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 import { MatButtonModule, MatCheckboxModule } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AnotherComponent } from "./another/another.component";
 import { AppComponent } from "./app.component";
 import { BrandNewComponent } from "./brandnewcomp/brandnew.component";
@@ -23,11 +25,14 @@ import { OtherComponent } from "./other/other.component";
 import { AuthService } from "./projectscomponent/auth.service";
 import { DisplayData } from "./projectscomponent/data.service";
 import { ProjectDetailsComponent } from "./projectscomponent/details.component";
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-// import { HTTP_INTERCEPTORS } from "@angular/common/http";
-import { TokenInterceptor } from "./token.interceptor";
 import { AuthGuard } from "./projectscomponent/guard.service";
 import { ProjectsComponent } from "./projectscomponent/projects.component";
+import { Auth0Service } from "./services/auth.service";
+import { UserService } from "./services/custom/user.service";
+import { AuthInterceptor } from "./services/httpinterceptor.service";
+import { StorageBrowser } from "./services/storage.browser";
+// import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { TokenInterceptor } from "./token.interceptor";
 const appRoutes: Routes = [
   { path: "abc", component: OtherComponent },
   { path: "", component: OtherComponent },
@@ -82,6 +87,8 @@ const appRoutes: Routes = [
       // <-- debugging purposes only
     ),
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgbModule.forRoot(),
     BrowserAnimationsModule,
     MatButtonModule,
@@ -90,12 +97,20 @@ const appRoutes: Routes = [
   providers: [
     DisplayData,
     AuthGuard,
+    Auth0Service,
+    UserService,
     AuthService,
-    {
-      provide: HttpClientModule,
-      useClass: TokenInterceptor
-      // multi: true
-    }
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptor,
+    //   multi: true
+    // },
+    StorageBrowser
+    // {
+    //   provide: HttpClientModule,
+    //   useClass: TokenInterceptor
+    //   // multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

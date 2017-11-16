@@ -1,14 +1,22 @@
 import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { DisplayData } from "./../projectscomponent/data.service";
+import { UserService } from "./../services/custom/user.service";
 @Component({
   templateUrl: "./plazy.component.html"
 })
 export class PlazyComponent {
   private results;
   private filteredResults;
-  constructor(private http: HttpClient, private data: DisplayData) {
+  constructor(
+    private http: HttpClient,
+    private data: DisplayData,
+    private userService: UserService
+  ) {
+    console.log(this.data.myval);
     this.getResults();
+    // this.userService.getstuff();
+    // console.log("resss");
   }
 
   filterString = "";
@@ -16,7 +24,9 @@ export class PlazyComponent {
     if (!val) {
       this.filteredResults = this.results;
     }
-    this.filteredResults = this.results.filter(res => res.body.indexOf(val) >= 0);
+    this.filteredResults = this.results.filter(
+      res => res.body.indexOf(val) >= 0
+    );
   }
   clicked(res) {
     alert(JSON.stringify(res));
@@ -35,7 +45,7 @@ export class PlazyComponent {
   }
   async getResults() {
     this.results = await this.data.getPosts();
-    this.filteredResults = this.results;
+    // this.filteredResults = this.results;
   }
 }
 // ngFor="trackBy: trackById;let i = index;"

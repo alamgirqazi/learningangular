@@ -1,3 +1,38 @@
-<h2>
-  This is the Home Page
-</h2>
+<div class="row">
+  <div class="col-sm-6">
+    <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
+      <br>
+      <br>
+      <input type="text" (change)="changeVal(username)" [class.submitted]="isUserError" placeholder="username" #username="ngModel"
+        class="form-control" required name="username" ngModel ngControl="username">
+      <br>
+      <div *ngIf="f.submitted && !username.valid" class="alert alert-danger">
+        <!-- <div [hidden]="!heroForm.submitted || (name.valid || name.pristine)" class="alert alert-danger"> -->
+        Name is required
+      </div>
+
+      <input [class.submitted]="isPassError" (change)="changePassVal(password)" type="password" placeholder="password" #password="ngModel"
+        name="password" minlength="3" maxLength="24" required class="form-control" ngModel ngControl="password">
+      <br>
+      <div *ngIf="f.submitted && !password.valid" class="alert alert-danger">
+        <!-- <div [hidden]="!heroForm.submitted || (name.valid || name.pristine)" class="alert alert-danger"> -->
+        Choose password between 3 to 24 characters
+      </div>
+      <br>
+      <div *ngIf="isError" class="alert alert-danger">
+        <!-- <div [hidden]="!heroForm.submitted || (name.valid || name.pristine)" class="alert alert-danger"> -->
+        {{errorText}}
+      </div>
+      <br>
+      <button type="submit">Submit</button>
+      <br>
+      <br>
+      <br>
+
+      <div *ngIf="isSuccess" class="alert alert-success">
+        <!-- <div [hidden]="!heroForm.submitted || (name.valid || name.pristine)" class="alert alert-danger"> -->
+        User Logged in successfully
+      </div>
+    </form>
+  </div>
+</div>

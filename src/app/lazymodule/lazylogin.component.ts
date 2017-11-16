@@ -44,6 +44,12 @@ interface Credentials {
     <!-- <div [hidden]="!heroForm.submitted || (name.valid || name.pristine)" class="alert alert-danger"> -->
     {{errorText}}
   </div>
+  <div class="checkbox checkbox-warning help-block ">
+  <input id="checkbox5"  ngModel ngControl="checkbox" name="rememberMe" type="checkbox">
+  <label for="checkbox5">
+     Remember Me
+  </label>
+</div>
   <br>
       <button type="submit">Submit</button>
       <br>
@@ -59,7 +65,7 @@ interface Credentials {
       </div>
   `
 })
-export class LoginComponent {
+export class LazyLoginComponent {
   credentials: Credentials;
   isError: boolean;
   isSuccess: boolean;
@@ -96,18 +102,19 @@ export class LoginComponent {
     if (password.valid) this.isPassError = false;
   }
   onLogin(credentials) {
-    // this.userService.getStu().subscribe(
-    //   data => {
-    //     this.jsonPlaceholder = data;
-    //     console.log(this.jsonPlaceholder);
-    //   },
-    //   err => {
-    //     console.log("Something went wrong!");
-    //   }
-    // );
-    console.log(this.displayData.projects);
     console.log(credentials);
-    this.getPostDat();
+    this.displayData.verifyUser(credentials).subscribe(
+      data => {
+        // this.jsonPlaceholder = data;
+        console.log(data);
+        // this.auth0.setToken(data);
+      },
+      err => {
+        console.log("Somethinggs went wrong!");
+      }
+    );
+
+    // this.getPostDat();
   }
   async getPostDat() {
     const res = await this.displayData.getPosts();

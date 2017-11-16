@@ -1,8 +1,9 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
+import { Auth0Service } from "./../services/auth.service";
 
 interface InterfaceSearchItem {
   // results: {};
@@ -13,7 +14,8 @@ interface InterfaceSearchItem {
 @Injectable()
 export class DisplayData {
   public url: any;
-  constructor(private http: HttpClient) {}
+  public myval = 2;
+  constructor(private http: HttpClient, private auth0: Auth0Service) {}
   projectsData = [
     {
       id: 1,
@@ -57,7 +59,9 @@ export class DisplayData {
     }
   ];
   sampleurl: string;
-
+  getStu() {
+    return this.http.get("https://jsonplaceholder.typicode.com/posts/");
+  }
   get projects(): any {
     return this.projectsData;
   }
@@ -78,6 +82,7 @@ export class DisplayData {
 
     return this.http.get(this.url);
   }
+
   async dataFromJsonPlaceholderTwo(num): Promise<any> {
     this.url = "https://jsonplaceholder.typicode.com/posts/" + num + 2;
     const response = await this.http
@@ -87,9 +92,33 @@ export class DisplayData {
     return response;
   }
 
-  async getPosts(): Promise<any> {
+  public verifyUser(credentials): Observable<any> {
+    return this.http
+      .post(
+        "http://localhost:3000/api/Users/login",
+        {
+          username: credentials.username,
+          password: credentials.password
+        },
+        {
+          headers: new HttpHeaders().set(
+            "Authorization",
+            "this.auth0.getAccessTokenId()"
+          )
+        }
+      )
+      .map((response: any) => {
+        response.ttl = parseInt(response.ttl);
+        response.rememberMe = credentials.rememberMe;
+        this.auth0.setToken(response);
+        return response;
+      });
+  }
+
+  public async getPosts(): Promise<any> {
+    console.log("data service called. getPosts() function");
     const result = await this.http
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get("https://jsonplaceholder.typicode.com/users/1")
       .toPromise();
     console.log("result");
     console.log(result);

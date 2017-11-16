@@ -11,15 +11,18 @@ import { PlazyComponent } from "./plazy.component";
 import { ClazyComponent } from "./clazy.component";
 import { LazyService } from "./lazy.service";
 import { CommonModule } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { DisplayData } from "./../projectscomponent/data.service";
 import { FilterPipe } from "./../search.pipe";
 import { FormsModule } from "@angular/forms";
+import { LazyLoginComponent } from "./lazylogin.component";
+import { AuthInterceptor } from "../services/httpinterceptor.service";
 
 @NgModule({
   imports: [routing, NgbModule, HttpClientModule, CommonModule, FormsModule],
   declarations: [
     LazyComponent,
+    LazyLoginComponent,
     MoreLazyComponent,
     NamedoutletComponent,
     RouterbComponent,
@@ -28,6 +31,6 @@ import { FormsModule } from "@angular/forms";
     PlazyComponent,
     FilterPipe
   ],
-  providers: [LazyService, DisplayData]
+  providers: [LazyService]
 })
 export class LazyModule {}

@@ -1,65 +1,49 @@
 import { Component, OnInit } from "@angular/core";
 
-// @Component({
-//   templateUrl: './other.component.html',
-//   styleUrls: ['./other.component.css']
-// })
-// export class OtherComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
 import { Router } from "@angular/router";
 import { AuthService } from "./../projectscomponent/auth.service";
-
+import { UserService } from "./../services/custom/user.service";
+interface Credentials {
+  username: string;
+  password: string;
+}
 @Component({
   selector: "app-other",
 
-  template: `
-    <h2>LOGIN</h2>
-    <p>{{message}}</p>
-    <p>other component</p>
-    `
+  templateUrl: "other.component.html"
 })
 export class OtherComponent {
   message: string;
-
-  constructor(public authService: AuthService, public router: Router) {
-    this.setMessage();
+  credentials: Credentials;
+  isError: boolean;
+  isSuccess: boolean;
+  isPassError: boolean;
+  isUserError: boolean;
+  errorText = "";
+  constructor(
+    public authService: AuthService,
+    public router: Router,
+    private userService: UserService
+  ) {
+    console.log("ABC COmp");
+    console.log(this.userService.val);
+    this.getResults();
   }
 
-  setMessage() {
-    this.message = "Logged " + (this.authService.isLoggedIn ? "in" : "out");
+  result;
+  changeVal(username) {
+    if (username.valid) this.isUserError = false;
+  }
+  changePassVal(password) {
+    if (password.valid) this.isPassError = false;
+  }
+  onLogin(credentials) {
+    // console.log(this.userService.projects);
+    console.log(credentials);
   }
 
-  // login() {
-  //   this.message = "Trying to log in ...";
-
-  //   this.authService.login().subscribe(() => {
-  //     this.setMessage();
-  //     if (this.authService.isLoggedIn) {
-  //       // Get the redirect URL from our auth service
-  //       // If no redirect has been set, use the default
-  //       let redirect = this.authService.redirectUrl
-  //         ? this.authService.redirectUrl
-  //         : "/projects";
-
-  //       // Redirect the user
-  //       this.router.navigate([redirect]);
-  //     }
-  //   });
-  // }
-
-  // logout() {
-  //   this.authService.logout();
-  //   this.setMessage();
-  // }
+  async getResults() {
+    this.result = await this.userService.getPosts();
+    // this.filteredResults = this.results;
+  }
 }
-// <p>
-//   <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-//   <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-// </p>

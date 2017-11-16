@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
+// import { HttpClientModule } from "@angular/common/http";
 
 import { ExampleComponent } from "./example.component";
 import { LoginComponent } from "./login.component";
@@ -13,6 +13,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms"; // <-- #1 import module
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   imports: [

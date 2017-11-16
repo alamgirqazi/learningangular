@@ -51,10 +51,10 @@ export class ProjectDetailsComponent implements OnInit {
 
       this.displayData.dataFromJsonPlaceholder(this.routeId).subscribe(
         data => {
-          this.jsonPlaceholder = data;
+          console.log("Login successful");
         },
         err => {
-          console.log("Something went wrong!");
+          console.log("Something went wrong! Login not successful");
         }
       );
 

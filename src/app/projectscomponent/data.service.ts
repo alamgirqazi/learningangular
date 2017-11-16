@@ -4,7 +4,10 @@ import { Observable } from "rxjs";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 import { Auth0Service } from "./../services/auth.service";
-
+// import { BaseService } from "../services/base.service";
+// import { HttpClient } from "@angular/common/http";
+// import { Http } from "@angular/http";
+// import { JSONSearchParams } from "../services/search.params";
 interface InterfaceSearchItem {
   // results: {};
   id: number;
@@ -15,7 +18,10 @@ interface InterfaceSearchItem {
 export class DisplayData {
   public url: any;
   public myval = 2;
-  constructor(private http: HttpClient, private auth0: Auth0Service) {}
+  constructor(
+    protected http: HttpClient,
+    protected auth0: Auth0Service // protected searchParams: JSONSearchParams
+  ) {}
   projectsData = [
     {
       id: 1,

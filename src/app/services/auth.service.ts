@@ -12,7 +12,10 @@ import { StorageBrowser } from "./storage.browser";
 // }
 @Injectable()
 export class Auth0Service {
-  constructor(protected http: HttpClient, protected browser: StorageBrowser) {}
+  time;
+  constructor(protected http: HttpClient, protected browser: StorageBrowser) {
+    this.time = new Date();
+  }
   private token: SDKToken = new SDKToken();
 
   public async initializer() {

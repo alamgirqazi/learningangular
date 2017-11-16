@@ -33,6 +33,7 @@ import { AuthInterceptor } from "./services/httpinterceptor.service";
 import { StorageBrowser } from "./services/storage.browser";
 // import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TokenInterceptor } from "./token.interceptor";
+// import { JSONSearchParams } from "./services/search.params";
 const appRoutes: Routes = [
   { path: "abc", component: OtherComponent },
   { path: "", component: OtherComponent },
@@ -100,6 +101,7 @@ const appRoutes: Routes = [
     Auth0Service,
     UserService,
     AuthService,
+    // JSONSearchParams,
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: AuthInterceptor,

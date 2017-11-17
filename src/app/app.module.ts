@@ -29,10 +29,11 @@ import { AuthGuard } from "./projectscomponent/guard.service";
 import { ProjectsComponent } from "./projectscomponent/projects.component";
 import { Auth0Service } from "./services/auth.service";
 import { UserService } from "./services/custom/user.service";
-import { AuthInterceptor } from "./services/httpinterceptor.service";
+// import { AuthInterceptor } from "./services/httpinterceptor.service";
 import { StorageBrowser } from "./services/storage.browser";
+import { CookieBrowser } from "./services/cookiestorage.browser";
 // import { HTTP_INTERCEPTORS } from "@angular/common/http";
-import { TokenInterceptor } from "./token.interceptor";
+// import { TokenInterceptor } from "./token.interceptor";
 // import { JSONSearchParams } from "./services/search.params";
 const appRoutes: Routes = [
   { path: "abc", component: OtherComponent },
@@ -100,7 +101,14 @@ const appRoutes: Routes = [
     AuthGuard,
     Auth0Service,
     UserService,
+    CookieBrowser,
     AuthService,
+
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true
+    // },
     // JSONSearchParams,
     // {
     //   provide: HTTP_INTERCEPTORS,

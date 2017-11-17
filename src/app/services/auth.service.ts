@@ -9,13 +9,16 @@ import { SDKToken } from "./models/BaseModels";
 // interface InterfaceUserAuth{
 import { HttpClient } from "@angular/common/http";
 import { StorageBrowser } from "./storage.browser";
+import { CookieBrowser } from "./cookiestorage.browser";
 // }
 @Injectable()
 export class Auth0Service {
   time;
-  constructor(protected http: HttpClient, protected browser: StorageBrowser) {
-    this.time = new Date();
-  }
+  constructor(
+    protected http: HttpClient,
+    protected browser: StorageBrowser,
+    protected cookieBrowser: CookieBrowser
+  ) {}
   private token: SDKToken = new SDKToken();
 
   public async initializer() {
@@ -56,6 +59,13 @@ export class Auth0Service {
       this.persist("rememberMe", this.token.rememberMe);
       return true;
     } else {
+      this.persistCookie("id", this.token.id);
+      // this.persistCookie("user", this.token.user);
+      this.persistCookie("userId", this.token.userId);
+      // this.persistCookie("issuedAt", this.token.issuedAt);
+      this.persistCookie("created", this.token.created);
+      this.persistCookie("ttl", this.token.ttl);
+
       return false;
     }
   }
@@ -71,6 +81,16 @@ export class Auth0Service {
   protected persist(prop: string, value: any): void {
     try {
       this.browser.set(
+        `${prop}`,
+        typeof value === "object" ? JSON.stringify(value) : value
+      );
+    } catch (err) {
+      console.error("Cannot access local/session storage:", err);
+    }
+  }
+  protected persistCookie(prop: string, value: any): void {
+    try {
+      this.cookieBrowser.set(
         `${prop}`,
         typeof value === "object" ? JSON.stringify(value) : value
       );

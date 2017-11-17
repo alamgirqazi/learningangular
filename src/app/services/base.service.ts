@@ -34,76 +34,79 @@
 //   protected model: any;
 
 //   constructor(
-//     protected http: Http,
+//     protected http: HttpClient,
 //     // protected models: SDKModels,
-//     protected auth0: Auth0Service,
-//     protected searchParams: JSONSearchParams // @Optional() @Inject(ErrorHandler) protected errorHandler: ErrorHandler
+//     protected auth0: Auth0Service // protected searchParams: JSONSearchParams // @Optional() @Inject(ErrorHandler) protected errorHandler: ErrorHandler
 //   ) {
 //     // this.model = this.models.get(this.getModelName());
 //   }
 
-//   public request(
-//     method: string,
-//     url: string,
-//     routeParams: any = {},
-//     urlParams: any = {},
-//     postBody: any = {}
-//   ): Observable<any> {
-//     // Headers to be sent
-//     let headers: Headers = new Headers();
-//     headers.append("Content-Type", "application/json");
-//     // Authenticate request
-//     this.authenticate(url, headers);
-//     // Transpile route variables to the actual request Values
-//     Object.keys(routeParams).forEach((key: string) => {
-//       url = url.replace(
-//         new RegExp(":" + key + "(/|$)", "g"),
-//         routeParams[key] + "$1"
-//       );
-//     });
-//     // Body fix for built in remote methods using "data", "options" or "credentials
-//     // that are the actual body, Custom remote method properties are different and need
-//     // to be wrapped into a body object
-//     let body: any;
-//     let postBodyKeys =
-//       typeof postBody === "object" ? Object.keys(postBody) : [];
-//     if (postBodyKeys.length === 1) {
-//       body = postBody[postBodyKeys.shift()];
-//     } else {
-//       body = postBody;
-//     }
-//     // Separate filter object from url params and add to search query
-//     if (urlParams.filter) {
-//       headers.append("filter", JSON.stringify(urlParams.filter));
-//       delete urlParams.filter;
-//     }
+//   //   public request(method: string, body: any): Observable<any> {
+//   //     let meth = method;
+//   //   }
 
-//     this.searchParams.setJSON(urlParams);
-//     let request: Request = new Request(
-//       new RequestOptions({
-//         headers: headers,
-//         method: method,
-//         url: url,
-//         search:
-//           Object.keys(urlParams).length > 0
-//             ? this.searchParams.getURLSearchParams()
-//             : null,
-//         body: body ? JSON.stringify(body) : undefined
-//       })
-//     );
-//     return this.http
-//       .request(request)
-//       .map((res: any) => (res.text() != "" ? res.json() : {}))
-//       .catch(e => console.log("error"));
-//     // .catch((e) => this.errorHandler.handleError(e));
-//   }
+//   //   public request(
+//   //     method: string,
+//   //     url: string,
+//   //     routeParams: any = {},
+//   //     urlParams: any = {},
+//   //     postBody: any = {}
+//   //   ): Observable<any> {
+//   //     // Headers to be sent
+//   //     let headers: Headers = new Headers();
+//   //     headers.append("Content-Type", "application/json");
+//   //     // Authenticate request
+//   //     this.authenticate(url, headers);
+//   //     // Transpile route variables to the actual request Values
+//   //     Object.keys(routeParams).forEach((key: string) => {
+//   //       url = url.replace(
+//   //         new RegExp(":" + key + "(/|$)", "g"),
+//   //         routeParams[key] + "$1"
+//   //       );
+//   //     });
+//   //     // Body fix for built in remote methods using "data", "options" or "credentials
+//   //     // that are the actual body, Custom remote method properties are different and need
+//   //     // to be wrapped into a body object
+//   //     let body: any;
+//   //     let postBodyKeys =
+//   //       typeof postBody === "object" ? Object.keys(postBody) : [];
+//   //     if (postBodyKeys.length === 1) {
+//   //       body = postBody[postBodyKeys.shift()];
+//   //     } else {
+//   //       body = postBody;
+//   //     }
+//   //     // Separate filter object from url params and add to search query
+//   //     if (urlParams.filter) {
+//   //       headers.append("filter", JSON.stringify(urlParams.filter));
+//   //       delete urlParams.filter;
+//   //     }
 
-//   public authenticate<T>(url: string, headers: Headers): void {
-//     if (this.auth0.getAccessTokenId()) {
-//       headers.append(
-//         "Authorization",
-//         LoopBackConfig.getAuthPrefix() + this.auth0.getAccessTokenId()
-//       );
-//     }
-//   }
+//   //     this.searchParams.setJSON(urlParams);
+//   //     let request: Request = new Request(
+//   //       new RequestOptions({
+//   //         headers: headers,
+//   //         method: method,
+//   //         url: url,
+//   //         search:
+//   //           Object.keys(urlParams).length > 0
+//   //             ? this.searchParams.getURLSearchParams()
+//   //             : null,
+//   //         body: body ? JSON.stringify(body) : undefined
+//   //       })
+//   //     );
+//   //     return this.http
+//   //       .request(request)
+//   //       .map((res: any) => (res.text() != "" ? res.json() : {}))
+//   //       .catch(e => console.log("error"));
+//   //     // .catch((e) => this.errorHandler.handleError(e));
+//   //   }
+
+//   //   public authenticate<T>(url: string, headers: Headers): void {
+//   //     if (this.auth0.getAccessTokenId()) {
+//   //       headers.append(
+//   //         "Authorization",
+//   //         LoopBackConfig.getAuthPrefix() + this.auth0.getAccessTokenId()
+//   //       );
+//   //     }
+//   //   }
 // }

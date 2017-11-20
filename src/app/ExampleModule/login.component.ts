@@ -5,6 +5,8 @@ import { Auth0Service } from "./../services/auth.service";
 import { UserService } from "./../services/custom/user.service";
 import { Observable } from "rxjs/Observable";
 import { DisplayData } from "../projectscomponent/data.service";
+import { SlimLoadingBarService } from "ng2-slim-loading-bar";
+
 // import { LoginService } from "../services/loginservice.service";
 interface Credentials {
   username: string;
@@ -21,6 +23,8 @@ interface Credentials {
     border: 1px solid green;}`
   ],
   template: `
+  <ng2-slim-loading-bar></ng2-slim-loading-bar>
+  
 <div class="row">
 <div class="col-sm-6">
     <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
@@ -55,6 +59,10 @@ interface Credentials {
       User Logged in successfully
     </div>
       </form>
+      <button (click)="startLoading()">Start Loading</button>
+      <button (click)="stopLoading()">Stop Loading</button>
+      <button (click)="completeLoading()">Complete Loading</button>
+      
       </div>
       </div>
   `
@@ -66,11 +74,13 @@ export class LoginComponent {
   isPassError: boolean;
   isUserError: boolean;
   errorText = "";
+
   constructor(
     private auth: AuthService,
     private displayData: DisplayData,
     private userService: UserService,
     private http: HttpClient,
+    private slimLoadingBarService: SlimLoadingBarService,
     private auth0: Auth0Service // private loginService: LoginService
   ) {
     this.getResults();
@@ -85,6 +95,20 @@ export class LoginComponent {
   jsonPlaceholder;
   // }
   result;
+  startLoading() {
+    this.slimLoadingBarService.start(() => {
+      console.log("Loading complete");
+    });
+  }
+
+  stopLoading() {
+    this.slimLoadingBarService.stop();
+  }
+
+  completeLoading() {
+    this.slimLoadingBarService.complete();
+  }
+
   changeVal(username) {
     // console.log("value changed");
     // console.log(username);
@@ -97,11 +121,13 @@ export class LoginComponent {
   }
   onLogin(credentials) {
     // console.log(this.displayData.projects);
+    this.startLoading();
     console.log(credentials);
     this.getPostDat();
   }
   async getPostDat() {
     const res = await this.displayData.getPosts();
+    this.completeLoading();
   }
   async getResults() {
     this.result = await this.displayData.getPosts();

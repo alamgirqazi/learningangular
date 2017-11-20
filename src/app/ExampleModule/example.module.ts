@@ -14,6 +14,7 @@ import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms"; // <-- #1 import module
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HttpClientModule } from "@angular/common/http";
+import { SlimLoadingBarModule } from "ng2-slim-loading-bar";
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from "@angular/common/http";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    SlimLoadingBarModule
   ],
   declarations: [
     ExampleComponent,

@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Auth0Service } from "./../services/auth.service";
 import { UserService } from "./../services/custom/user.service";
 import { Observable } from "rxjs/Observable";
+import { SlimLoadingBarService } from "ng2-slim-loading-bar";
+
 import { DisplayData } from "../projectscomponent/data.service";
 // import { LoginService } from "../services/loginservice.service";
 interface Credentials {
@@ -21,6 +23,7 @@ interface Credentials {
     border: 1px solid green;}`
   ],
   template: `
+  <ng2-slim-loading-bar ></ng2-slim-loading-bar>
 <div class="row">
 <div class="col-sm-6">
     <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
@@ -73,6 +76,7 @@ export class LazyLoginComponent {
   isUserError: boolean;
   errorText = "";
   constructor(
+    private slimLoadingBarService: SlimLoadingBarService,
     private auth: AuthService,
     private displayData: DisplayData,
     private userService: UserService,
@@ -102,19 +106,36 @@ export class LazyLoginComponent {
     if (password.valid) this.isPassError = false;
   }
   onLogin(credentials) {
+    this.startLoading();
     console.log(credentials);
     this.displayData.verifyUser(credentials).subscribe(
       data => {
         // this.jsonPlaceholder = data;
         console.log(data);
         // this.auth0.setToken(data);
+        this.completeLoading();
       },
       err => {
+        this.stopLoading();
+
         console.log("Somethinggs went wrong!");
       }
     );
 
     // this.getPostDat();
+  }
+  startLoading() {
+    this.slimLoadingBarService.start(() => {
+      console.log("Loading complete");
+    });
+  }
+
+  stopLoading() {
+    this.slimLoadingBarService.stop();
+  }
+
+  completeLoading() {
+    this.slimLoadingBarService.complete();
   }
   async getPostDat() {
     const res = await this.displayData.getPosts();

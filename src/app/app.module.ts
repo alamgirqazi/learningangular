@@ -32,6 +32,8 @@ import { UserService } from "./services/custom/user.service";
 // import { AuthInterceptor } from "./services/httpinterceptor.service";
 import { StorageBrowser } from "./services/storage.browser";
 import { CookieBrowser } from "./services/cookiestorage.browser";
+import { SlimLoadingBarModule } from "ng2-slim-loading-bar";
+
 // import { HTTP_INTERCEPTORS } from "@angular/common/http";
 // import { TokenInterceptor } from "./token.interceptor";
 // import { JSONSearchParams } from "./services/search.params";
@@ -91,6 +93,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    SlimLoadingBarModule.forRoot(),
     NgbModule.forRoot(),
     BrowserAnimationsModule,
     MatButtonModule,
@@ -122,6 +125,7 @@ const appRoutes: Routes = [
     //   // multi: true
     // }
   ],
+  exports: [SlimLoadingBarModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -16,10 +16,18 @@ import { DisplayData } from "./../projectscomponent/data.service";
 import { FilterPipe } from "./../search.pipe";
 import { FormsModule } from "@angular/forms";
 import { LazyLoginComponent } from "./lazylogin.component";
+import { SlimLoadingBarModule } from "ng2-slim-loading-bar";
 // import { AuthInterceptor } from "../services/httpinterceptor.service";
 
 @NgModule({
-  imports: [routing, NgbModule, HttpClientModule, CommonModule, FormsModule],
+  imports: [
+    routing,
+    NgbModule,
+    HttpClientModule,
+    CommonModule,
+    FormsModule,
+    SlimLoadingBarModule
+  ],
   declarations: [
     LazyComponent,
     LazyLoginComponent,

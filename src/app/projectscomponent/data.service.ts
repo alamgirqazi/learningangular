@@ -124,12 +124,13 @@ export class DisplayData {
         "http://localhost:3000/api/Users/login",
         {
           username: credentials.username,
-          password: credentials.password
+          password: credentials.password,
+          X-API-KEY:  "7b7aa78f506a40bc0320fa308efc19bf "
         },
         {
           headers: new HttpHeaders().set(
-            "Authorization",
-            "this.auth0.getAccessTokenId()"
+            "pd-",
+            "1"
           )
         }
       )

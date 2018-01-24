@@ -40,7 +40,7 @@ interface Credentials {
       <br>
       <div *ngIf="f.submitted && !password.valid" class="alert alert-danger">
       <!-- <div [hidden]="!heroForm.submitted || (name.valid || name.pristine)" class="alert alert-danger"> -->
-      Choose password between 3 to 24 characters
+      Choose password between 8 to 32 characters
     </div>
     <br>
     <div *ngIf="isError" class="alert alert-danger">

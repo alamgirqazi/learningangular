@@ -6,8 +6,8 @@ import { UserService } from "./../services/custom/user.service";
   templateUrl: "./plazy.component.html"
 })
 export class PlazyComponent {
-  private results;
-  private filteredResults;
+  results;
+  filteredResults;
   constructor(
     private http: HttpClient,
     private data: DisplayData,

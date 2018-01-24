@@ -35,7 +35,7 @@ interface Credentials {
       <!-- <div [hidden]="!heroForm.submitted || (name.valid || name.pristine)" class="alert alert-danger"> -->
       Name is required
     </div>
-   
+
       <input [class.submitted]="isPassError" (change)="changePassVal(password)" type="password" placeholder="password" #password="ngModel" name="password" minlength="3" maxLength="24" required  class="form-control" ngModel ngControl="password">
       <br>
       <div *ngIf="f.submitted && !password.valid" class="alert alert-danger">
@@ -58,7 +58,7 @@ interface Credentials {
       <br>
       <br>
       <br>
-      
+
       <div *ngIf="isSuccess" class="alert alert-success">
       <!-- <div [hidden]="!heroForm.submitted || (name.valid || name.pristine)" class="alert alert-danger"> -->
       User Logged in successfully
@@ -108,20 +108,6 @@ export class LazyLoginComponent {
   onLogin(credentials) {
     this.startLoading();
     console.log(credentials);
-    this.displayData.verifyUser(credentials).subscribe(
-      data => {
-        // this.jsonPlaceholder = data;
-        console.log(data);
-        // this.auth0.setToken(data);
-        this.completeLoading();
-      },
-      err => {
-        this.stopLoading();
-
-        console.log("Somethinggs went wrong!");
-      }
-    );
-
     // this.getPostDat();
   }
   startLoading() {

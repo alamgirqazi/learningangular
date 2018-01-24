@@ -4,16 +4,13 @@ import { Observable } from "rxjs";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 import { Auth0Service } from "./../services/auth.service";
-// import { BaseService } from "../services/base.service";
-// import { HttpClient } from "@angular/common/http";
-// import { Http } from "@angular/http";
-// import { JSONSearchParams } from "../services/search.params";
+
 interface InterfaceSearchItem {
-  // results: {};
   id: number;
   title: string;
   body: string;
 }
+
 @Injectable()
 export class DisplayData {
   public url: any;
@@ -96,50 +93,6 @@ export class DisplayData {
       .toPromise();
     console.log(response);
     return response;
-  }
-
-  public verifyUser(credentials): Observable<any> {
-    // let _method: string = "POST";
-    // let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    // "/customers/login";
-    // let _routeParams: any = {};
-    // let _postBody: any = {
-    //   credentials: credentials
-    // };
-    // let _urlParams: any = {};
-    // if (include) _urlParams.include = include;
-    // let result = this.request(_method, _url, _routeParams, _urlParams, _postBody)
-    //   .map(
-    //     (response: any) => {
-    //       response.ttl = parseInt(response.ttl);
-    //       response.rememberMe = rememberMe;
-    //       this.auth.setToken(response);
-    //       return response;
-    //     }
-    //   );
-    //   return result;
-
-    return this.http
-      .post(
-        "http://localhost:3000/api/Users/login",
-        {
-          username: credentials.username,
-          password: credentials.password,
-          X-API-KEY:  "7b7aa78f506a40bc0320fa308efc19bf "
-        },
-        {
-          headers: new HttpHeaders().set(
-            "pd-",
-            "1"
-          )
-        }
-      )
-      .map((response: any) => {
-        response.ttl = parseInt(response.ttl);
-        response.rememberMe = credentials.rememberMe;
-        this.auth0.setToken(response);
-        return response;
-      });
   }
 
   public async getPosts(): Promise<any> {

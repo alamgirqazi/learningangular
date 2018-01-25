@@ -38,8 +38,10 @@ import { SlimLoadingBarModule } from "ng2-slim-loading-bar";
 // import { TokenInterceptor } from "./token.interceptor";
 // import { JSONSearchParams } from "./services/search.params";
 const appRoutes: Routes = [
+  { path: "", redirectTo: "/abc", pathMatch: "full" },
+
   { path: "abc", component: OtherComponent },
-  { path: "", component: OtherComponent },
+  // { path: "", component: OtherComponent },
   { path: "lazy", loadChildren: "./lazymodule/lazy.module#LazyModule" },
   // {
   //   path: "example",

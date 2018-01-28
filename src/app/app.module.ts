@@ -37,16 +37,13 @@ import { SlimLoadingBarModule } from "ng2-slim-loading-bar";
 // import { HTTP_INTERCEPTORS } from "@angular/common/http";
 // import { TokenInterceptor } from "./token.interceptor";
 // import { JSONSearchParams } from "./services/search.params";
+
 const appRoutes: Routes = [
   { path: "", redirectTo: "/abc", pathMatch: "full" },
 
   { path: "abc", component: OtherComponent },
-  // { path: "", component: OtherComponent },
   { path: "lazy", loadChildren: "./lazymodule/lazy.module#LazyModule" },
-  // {
-  //   path: "example",
-  //   loadChildren: () => ExampleModule
-  // },
+
   {
     path: "example",
     loadChildren: "./ExampleModule/example.module#ExampleModule"
@@ -54,7 +51,6 @@ const appRoutes: Routes = [
   {
     path: "projects",
     component: ProjectsComponent,
-    // canActivate: [AuthGuard],
     children: [
       {
         path: "",
